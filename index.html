@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A page built for Charles Bessent</title>
+<meta name="description" content="A Scrollsite from Mark Winterburn, made for an audience of one.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --stone:#E7E5DF;
+  --paper:#F2F1ED;
+  --ink:#1C2124;
+  --muted:#5B6166;
+  --evergreen:#1E5A46;
+  --evergreen-soft:#DCE8E2;
+  --brick:#8A3326;
+  --rule:#C9C6BD;
+  --phone:#FFFFFF;
+  --phone-ink:#1C2124;
+  --phone-line:#E4E6E6;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --stone:#11181B;
+    --paper:#172024;
+    --ink:#E9ECEA;
+    --muted:#9AA4A7;
+    --evergreen:#6FBF9C;
+    --evergreen-soft:#1D3A30;
+    --brick:#D98472;
+    --rule:#2C383C;
+    --phone:#0C1113;
+    --phone-ink:#E9ECEA;
+    --phone-line:#23303A;
+  }
+}
+:root[data-theme="dark"]{
+  --stone:#11181B;
+  --paper:#172024;
+  --ink:#E9ECEA;
+  --muted:#9AA4A7;
+  --evergreen:#6FBF9C;
+  --evergreen-soft:#1D3A30;
+  --brick:#D98472;
+  --rule:#2C383C;
+  --phone:#0C1113;
+  --phone-ink:#E9ECEA;
+  --phone-line:#23303A;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--stone);
+  color:var(--ink);
+  font-family:"Libre Caslon Text",Georgia,"Times New Roman",serif;
+  font-size:1.0625rem;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+img{max-width:100%}
+a{color:var(--evergreen)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--evergreen);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:40rem;margin:0 auto;padding:0 1.35rem}
+section{padding:3.5rem 0}
+section + section{border-top:1px solid var(--rule)}
+
+h1,h2,h3{font-family:"Libre Caslon Display",Georgia,serif;font-weight:400;line-height:1.08;margin:0}
+h2{font-size:clamp(1.9rem,6.5vw,2.6rem);margin-bottom:1.1rem;letter-spacing:-0.005em}
+h3{font-size:1.35rem;margin-bottom:.35rem}
+p{margin:0 0 1rem}
+.lede{font-size:1.2rem;line-height:1.55}
+.small{font-size:.9rem;color:var(--muted)}
+
+/* Hero */
+.hero{padding:2.5rem 0 3rem}
+.for{font-style:italic;color:var(--muted);margin-bottom:2.25rem}
+.hero h1{
+  font-size:clamp(3.1rem,15vw,5.6rem);
+  line-height:.95;
+  letter-spacing:-0.015em;
+  color:var(--brick);
+  margin-bottom:1.5rem;
+}
+.hero h1 span{display:block;color:var(--ink)}
+.hero .note{border-left:3px solid var(--brick);padding-left:1rem;margin:0 0 2rem}
+.portland{
+  background:var(--paper);
+  border-radius:14px;
+  padding:1.25rem 1.25rem 1.1rem;
+}
+.portland p:last-child{margin:0}
+.tag{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:.9rem;color:var(--evergreen);font-weight:600}
+
+/* Two routes */
+.routes{display:grid;gap:1.5rem;margin-top:1.5rem}
+.route{padding-top:1rem;border-top:3px solid var(--ink)}
+.route .where{font-style:italic;color:var(--muted);margin-bottom:.4rem}
+
+/* Belief */
+.belief{display:grid;gap:.75rem;margin:1.5rem 0}
+.belief blockquote{
+  margin:0;
+  font-family:"Libre Caslon Display",Georgia,serif;
+  font-size:clamp(1.5rem,5.5vw,2rem);
+  line-height:1.15;
+}
+.belief cite{display:block;font-family:"Libre Caslon Text",Georgia,serif;font-style:italic;font-size:.9rem;color:var(--muted);margin-top:.3rem}
+.belief .and{font-style:italic;color:var(--muted)}
+
+/* Journey: a real sequence */
+.journey{list-style:none;margin:1.75rem 0 1.25rem;padding:0;counter-reset:step}
+.journey li{position:relative;padding:0 0 1.75rem 3rem;counter-increment:step}
+.journey li::before{
+  content:counter(step);
+  position:absolute;left:0;top:.1rem;
+  width:2rem;height:2rem;border-radius:50%;
+  border:1.5px solid var(--evergreen);color:var(--evergreen);
+  display:grid;place-items:center;
+  font-family:"Libre Caslon Display",Georgia,serif;font-size:1rem;
+}
+.journey li::after{
+  content:"";position:absolute;left:1rem;top:2.35rem;bottom:.35rem;width:1.5px;background:var(--rule);
+}
+.journey li:last-child{padding-bottom:0}
+.journey li:last-child::after{display:none}
+.journey .who{font-style:italic;color:var(--muted);font-size:.95rem}
+.pair{
+  background:var(--evergreen-soft);
+  border-radius:14px;
+  padding:1.25rem;
+  font-size:1.15rem;
+  line-height:1.5;
+}
+.pair p:last-child{margin:0}
+
+/* Phone */
+.phone-stage{display:flex;justify-content:center;margin:2rem 0 1.5rem}
+.phone{
+  width:100%;max-width:19.5rem;
+  background:var(--phone);
+  color:var(--phone-ink);
+  border:10px solid var(--ink);
+  border-radius:38px;
+  padding:1.1rem 1rem 1.25rem;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:.9rem;line-height:1.4;
+  box-shadow:0 18px 40px -22px rgba(28,33,36,.55);
+}
+.notch{width:5.5rem;height:1.1rem;background:var(--ink);border-radius:0 0 12px 12px;margin:-1.1rem auto .9rem}
+.app-title{font-weight:700;font-size:1.1rem;margin:0 0 .75rem}
+.rec{list-style:none;margin:0;padding:0}
+.rec li{display:flex;justify-content:space-between;gap:.5rem;padding:.6rem 0;border-bottom:1px solid var(--phone-line)}
+.rec li span:last-child{color:var(--muted);font-size:.8rem;white-space:nowrap}
+.rec li.new{
+  display:block;border:1.5px solid var(--evergreen);border-radius:12px;
+  padding:.75rem;margin:.8rem 0 0;background:var(--evergreen-soft);
+}
+.rec li.new strong{display:block}
+.rec li.new .meta{color:var(--muted);font-size:.8rem}
+.ask{display:flex;gap:.4rem;margin-top:.7rem}
+.ask .q{
+  flex:1;border:1px solid var(--phone-line);border-radius:999px;
+  padding:.45rem .75rem;background:var(--phone);font-size:.85rem;
+}
+.ask button{
+  border:0;border-radius:999px;background:var(--evergreen);color:var(--phone);
+  font:inherit;font-weight:600;font-size:.85rem;padding:.45rem .9rem;cursor:pointer;
+}
+.answer{margin-top:.65rem;font-size:.85rem;min-height:2.6rem}
+.answer[hidden]{display:none}
+.answer .said{font-weight:600}
+.play{display:inline-block;margin-top:.3rem;color:var(--evergreen);font-weight:600;font-size:.8rem}
+
+/* Numbers, inline and quiet */
+.facts{list-style:none;margin:1.5rem 0 0;padding:0}
+.facts li{padding:1rem 0;border-top:1px solid var(--rule)}
+.facts li:last-child{border-bottom:1px solid var(--rule)}
+.facts b{font-family:"Libre Caslon Display",Georgia,serif;font-weight:400;font-size:1.6rem;color:var(--evergreen);display:block;line-height:1.1;margin-bottom:.2rem}
+
+/* Pilot */
+
+/* Ask */
+.the-ask h2{color:var(--brick)}
+.ctas{display:grid;gap:.75rem;margin-top:1.75rem}
+.btn{
+  display:block;text-align:center;text-decoration:none;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:600;font-size:1rem;
+  padding:1rem 1.25rem;border-radius:12px;min-height:3.25rem;
+}
+.btn.primary{background:var(--evergreen);color:var(--stone);border:0;cursor:pointer;width:100%}
+.btn.secondary{border:1.5px solid var(--ink);color:var(--ink)}
+
+footer{padding:2.5rem 0 3rem;border-top:1px solid var(--rule)}
+footer p{font-style:italic;color:var(--muted);font-size:.95rem}
+
+@media (min-width:44rem){
+  body{font-size:1.125rem}
+  section{padding:5rem 0}
+  .hero{padding:4.5rem 0 4rem}
+  .routes{grid-template-columns:1fr 1fr;gap:2rem}
+  .ctas{grid-template-columns:1fr 1fr}
+  .ctas .primary{grid-column:1 / -1}
+}
+@media (prefers-reduced-motion:no-preference){
+  .answer.typing .said{animation:rise .5s ease-out both}
+  @keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+
+<main>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="for">A page built for Charles Bessent</p>
+    <h1>Built by Bastards.<span>Weird by choice.</span></h1>
+    <p class="note">History records that Blandford was built by Bastards: John and William, after the great fire of 1731. What the locals say next, we'll leave to the locals.</p>
+    <div class="portland">
+      <p>Twenty five miles south west, on the Isle of Portland, we make no claims about who built the place. We just ask that it stays strange.</p>
+      <p class="tag">#KeepPortlandWeird</p>
+    </div>
+  </header>
+
+  <section aria-labelledby="h-scroll">
+    <h2 id="h-scroll">Most websites are made for thousands of eyes.</h2>
+    <p class="lede">A Scrollsite is a webpage built for an audience of one. This one is for you, Charles, after a good conversation at HETT on Tuesday.</p>
+  </section>
+
+  <section aria-labelledby="h-routes">
+    <h2 id="h-routes">Two Dorset lads, two routes into health.</h2>
+    <div class="routes">
+      <div class="route">
+        <p class="where">Blandford</p>
+        <h3>Charles</h3>
+        <p>NHS operations, then out into the world of British charcuterie, then back again. Omnes first, on the side that runs the practices and checks the data. Now Evergreen Life, on the side that builds the platform. You have seen the same patient from every end, and you know what it costs a practice when they ring back to ask what the doctor said.</p>
+      </div>
+      <div class="route">
+        <p class="where">Isle of Portland</p>
+        <h3>Mark</h3>
+        <p>Twenty years as a broadcast Playout Director at the BBC, Channel 4, ITV and BT Sport, separating signal from noise. Now Digital and Transformation Lead for five GP practices and 74,000 patients in Weymouth and on Portland.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-belief">
+    <h2 id="h-belief">We already believe the same thing.</h2>
+    <div class="belief">
+      <blockquote>People Powered Health.<cite>Evergreen Life</cite></blockquote>
+      <p class="and">and</p>
+      <blockquote>Your appointment. Your record. On your phone.<cite>MyScribe</cite></blockquote>
+    </div>
+    <p>Both start from the same place. The record belongs to the person it is about, and it should live in their pocket. Three million people have already acted on that belief by choosing Evergreen. They are exactly the people who would want to keep their appointments too.</p>
+  </section>
+
+  <section aria-labelledby="h-journey">
+    <h2 id="h-journey">Before, during and after the appointment.</h2>
+    <p>You lit up at the before and the after. Here is how the pieces line up.</p>
+    <ol class="journey">
+      <li>
+        <h3>Before</h3>
+        <p class="who">askmyGP, and earlier still, Neighbourhood Signals</p>
+        <p>askmyGP carries the patient's own words to the practice. Neighbourhood Signals listens even earlier, in the space before demand, when someone first notices a rash or feels low and goes looking for help.</p>
+      </li>
+      <li>
+        <h3>During</h3>
+        <p class="who">MyScribe</p>
+        <p>One question on the patient's phone: do you mind if I record this? Just to help me remember. Then the conversation is kept, faithfully.</p>
+      </li>
+      <li>
+        <h3>After</h3>
+        <p class="who">MyScribe and Afternote</p>
+        <p>The appointment goes home with the person who was in it, into the record they already keep, in the clinician's own words, readable on a tired day and shareable with whoever they choose.</p>
+      </li>
+    </ol>
+    <div class="pair">
+      <p>askmyGP holds the patient's words on the way in.</p>
+      <p>MyScribe holds the clinician's words on the way out.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-gap">
+    <h2 id="h-gap">The one thing your 3 million users can't keep yet.</h2>
+    <p>Their Evergreen record already holds GP records, prescriptions, results and vaccinations. What it can't hold is what was actually said in the room: the part people forget first and need most. That is the entry MyScribe adds.</p>
+
+    <div class="phone-stage">
+      <div class="phone" role="group" aria-label="Illustration of a MyScribe entry inside a personal health record">
+        <div class="notch" aria-hidden="true"></div>
+        <p class="app-title">My record</p>
+        <ul class="rec">
+          <li><span>GP record</span><span>Updated</span></li>
+          <li><span>Prescriptions</span><span>2 repeats</span></li>
+          <li><span>Test results</span><span>1 new</span></li>
+          <li><span>Vaccinations</span><span>Up to date</span></li>
+          <li class="new">
+            <strong>Conversation with your GP</strong>
+            <span class="meta">Tuesday, 9 minutes, recorded with MyScribe</span>
+            <div class="ask">
+              <span class="q">Was it one tablet or two?</span>
+              <button type="button" id="askBtn" aria-controls="answer">Ask</button>
+            </div>
+            <div class="answer" id="answer" aria-live="polite" hidden>
+              <span class="said">Your GP said: "Just the one, in the morning."</span><br>
+              <span class="play">Listen in your chosen voice</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class="small">An illustration, not a screenshot. Answers come back in the clinician's own words, read aloud in a voice the patient chooses. Not a summary of what they meant. What they actually said.</p>
+  </section>
+
+  <section aria-labelledby="h-why">
+    <h2 id="h-why">Now multiply it by 3 million.</h2>
+    <ul class="facts">
+      <li><b>40 to 80 percent</b>of what a clinician says is forgotten straight away (Kessels, 2003).</li>
+      <li><b>15 million</b>GP appointments are missed in England every year, costing the NHS over £216 million.</li>
+      <li><b>3 million</b>people already open Evergreen to check on their health. Every one of them has appointments they will half forget by the time they reach the car park.</li>
+    </ul>
+  </section>
+
+
+  <section class="the-ask" aria-labelledby="h-ask">
+    <h2 id="h-ask">One ask.</h2>
+    <p class="lede">Share this with your colleagues and see whose interest is piqued.</p>
+    <p>If anyone at Evergreen feels the same way, I'll bring MyScribe working, and we can work out together how 3 million people get the part of their record they can't keep yet.</p>
+    <div class="ctas">
+      <button type="button" class="btn primary" id="shareBtn">Share this page</button>
+      <a class="btn secondary" href="mailto:hello@markwinterburn.uk?subject=MyScribe%20and%20Evergreen">Email Mark</a>
+      <a class="btn secondary" href="https://www.linkedin.com/in/mark-winterburn/" target="_blank" rel="noopener">Message on LinkedIn</a>
+    </div>
+  </section>
+
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Made on the Isle of Portland for an audience of one. Mark Winterburn, hello@markwinterburn.uk</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('askBtn');
+  var ans=document.getElementById('answer');
+  if(!btn||!ans) return;
+  btn.addEventListener('click',function(){
+    ans.hidden=false;
+    ans.classList.remove('typing');
+    void ans.offsetWidth;
+    ans.classList.add('typing');
+    btn.textContent='Asked';
+  });
+})();
+(function(){
+  var b=document.getElementById('shareBtn');
+  if(!b) return;
+  b.addEventListener('click',function(){
+    var data={title:document.title,text:'A page about MyScribe and Evergreen Life',url:location.href};
+    if(navigator.share){navigator.share(data).catch(function(){});return;}
+    try{
+      navigator.clipboard.writeText(location.href).then(function(){b.textContent='Link copied';},function(){b.textContent=location.href;});
+    }catch(e){b.textContent=location.href;}
+  });
+})();
+</script>
+</body>
+</html>
